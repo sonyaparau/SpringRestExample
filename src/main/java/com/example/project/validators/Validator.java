@@ -1,5 +1,8 @@
 package com.example.project.validators;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Validator {
 
     public boolean validateName(String name) {
