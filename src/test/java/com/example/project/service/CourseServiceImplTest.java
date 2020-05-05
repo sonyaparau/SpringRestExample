@@ -14,14 +14,16 @@ import static org.junit.Assert.*;
 public class CourseServiceImplTest {
 
     @Autowired
-    private CourseServiceImpl courseServiceImpl;
+    private CourseService courseService;
 
     @Test
     public void testAddCourse() {
         Course course = new Course();
+        course.setId(200L);
         course.setCredits(3);
         course.setName("Baze de date");
-        Course addedCourse = courseServiceImpl.addCourse(course);
+        course.setMaxEnrollment(70);
+        Course addedCourse = courseService.addCourse(course);
         assertEquals("Baze de date", addedCourse.getName());
     }
 

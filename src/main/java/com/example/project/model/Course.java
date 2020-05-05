@@ -13,7 +13,7 @@ public class Course {
 
     @Id
     @Column(name = "idcourse")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.)
     private Long id;
 
     @Column(name = "namecourse")
@@ -25,11 +25,11 @@ public class Course {
     @Column(name = "credits")
     private Integer credits;
 
-    @ManyToMany(mappedBy = "attendedCourses")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "attendedCourses")
     @JsonIgnore
     private Set<Student> enrolledStudents = new HashSet<>();
 
-    @ManyToMany(mappedBy = "enrolledCourses")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "enrolledCourses")
     @JsonIgnore
     private Set<Teacher> teachers = new HashSet<>();
 

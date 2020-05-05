@@ -17,34 +17,27 @@ public class TeacherServiceImplTest {
     private TeacherService teacherService;
 
     @Test
-    public void testDeleteTeacherValid() {
-        Teacher teacher = teacherService.deleteTeacher(2L);
-//        assertEquals("Adrian", teacher.getFirstName());
-    }
-
-    @Test
     public void testDeleteTeacherInvalid() {
-        Teacher teacher = teacherService.deleteTeacher(200L);
+        Teacher teacher = teacherService.deleteTeacher(300L);
         assertNull(teacher);
     }
-
 
     @Test
     public void addTeacherValid() {
         Teacher teacher = new Teacher();
         teacher.setId(100L);
-        teacher.setFirstName("Popescu");
-        teacher.setLastName("Ion");
+        teacher.setFirstName("Petrescu");
+        teacher.setLastName("Adrian");
         Teacher teacherAdded = teacherService.addTeacher(teacher);
-        assertEquals("Popescu", teacherAdded.getFirstName());
+        assertEquals("Petrescu", teacherAdded.getFirstName());
     }
 
     @Test
-    public void addTeacherInavlid() {
+    public void addTeacherInvalid() {
         Teacher teacher = new Teacher();
-        teacher.setId(100L);
-        teacher.setFirstName("popescu");
-        teacher.setLastName("ion");
+        teacher.setId(200L);
+        teacher.setFirstName("petrescu");
+        teacher.setLastName("adrian");
         Teacher teacherAdded = teacherService.addTeacher(teacher);
         assertNull(teacherAdded);
     }

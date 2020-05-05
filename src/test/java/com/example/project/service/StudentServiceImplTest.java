@@ -14,17 +14,11 @@ import static org.junit.Assert.*;
 public class StudentServiceImplTest {
 
     @Autowired
-    StudentServiceImpl studentServiceImpl;
-
-    @Test
-    public void testDeleteStudentValid() {
-        Student student = studentServiceImpl.deleteStudent(2L);
-//        assertEquals("Catalin", student.getFirstName());
-    }
+    StudentService studentService;
 
     @Test
     public void testDeleteStudentInvalid() {
-        Student student = studentServiceImpl.deleteStudent(200L);
+        Student student = studentService.deleteStudent(900L);
         assertNull(student);
     }
 
@@ -34,17 +28,17 @@ public class StudentServiceImplTest {
         student.setId(100L);
         student.setFirstName("Popescu");
         student.setLastName("Ion");
-        Student studentAdded = studentServiceImpl.addStudent(student);
+        Student studentAdded = studentService.addStudent(student);
         assertEquals("Popescu", studentAdded.getFirstName());
     }
 
     @Test
-    public void addStudentInavlid() {
+    public void addStudentInvalid() {
         Student student = new Student();
-        student.setId(100L);
+        student.setId(200L);
         student.setFirstName("popescu");
         student.setLastName("ion");
-        Student studentAdded = studentServiceImpl.addStudent(student);
+        Student studentAdded = studentService.addStudent(student);
         assertNull(studentAdded);
     }
 
